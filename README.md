@@ -1,7 +1,7 @@
 # autoluft-etl
 This ETL is under construction.
 
-[Temporary Tableau Link](https://public.tableau.com/views/autoluft-etl/TrafficinBerlin?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) 
+[Temporary Tableau Link](https://public.tableau.com/views/autoluft-etl/Dashboard3?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) 
 ## Introduction
 Traffic in Berlin is monitored by the ["Verkehrsinformationszentrale Berlin" (VIZ)](https://viz.berlin.de) . Via infrared sensors they count vehicles and measure their speed at various station throughout Berlin. The data generated from their traffic detection system is provided at their [API endpoint](https://api.viz.berlin.de/daten/verkehrsdetektion), which is available under the [Datenlizenz Deutschland – Namensnennung – Version 2.0 (dl-de-by-2.0)](https://www.govdata.de/dl-de/by-2-0). 
 The data is lacking an analysis as their "Verkehrsanalyse" returns a 404 on their website. Therefore this project will provide an ETL (extract, transform, load) pipeline to aggregate the data from the API, transform it into a suitable data model and visualize it. Geospatial data of Berlins district is added to the model from [Geoportal Berlin / bezirksgrenzen](https://daten.odis-berlin.de/de/dataset/bezirksgrenzen/).
