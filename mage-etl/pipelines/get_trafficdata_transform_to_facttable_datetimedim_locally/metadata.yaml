@@ -1,56 +1,56 @@
 blocks:
 - all_upstream_blocks_executed: true
   color: null
-  configuration:
-    file_path: null
+  configuration: {}
   downstream_blocks:
-  - transform_traffic_sensor_data
+  - transform_traffic_data
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: get_traffic_sensor_location
-  retry_config: null
-  status: updated
-  timeout: null
-  type: data_loader
-  upstream_blocks: []
-  uuid: get_traffic_sensor_location
-- all_upstream_blocks_executed: false
-  color: null
-  configuration:
-    file_path: null
-  downstream_blocks: []
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: export_location_dim_locally
+  name: get_traffic_data
   retry_config: null
   status: executed
   timeout: null
-  type: data_exporter
-  upstream_blocks:
-  - transform_traffic_sensor_data
-  uuid: export_location_dim_locally
-- all_upstream_blocks_executed: false
+  type: data_loader
+  upstream_blocks: []
+  uuid: get_traffic_data
+- all_upstream_blocks_executed: true
   color: null
-  configuration:
-    file_path: null
+  configuration: {}
   downstream_blocks:
-  - export_location_dim_locally
+  - create_datetime_id_dim
+  - export_fact_table_locally
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: transform_traffic_sensor_data
+  name: transform_traffic_data
   retry_config: null
   status: executed
   timeout: null
   type: transformer
   upstream_blocks:
-  - get_traffic_sensor_location
-  uuid: transform_traffic_sensor_data
+  - get_traffic_data
+  uuid: transform_traffic_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: null
+  downstream_blocks:
+  - export_datetime_div_locally
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: create_datetime_id_dim
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - transform_traffic_data
+  uuid: create_datetime_id_dim
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
@@ -59,30 +59,47 @@ blocks:
   executor_type: local_python
   has_callback: false
   language: python
-  name: get_districts_berlin
+  name: export_datetime_div_locally
   retry_config: null
   status: executed
   timeout: null
-  type: data_loader
-  upstream_blocks: []
-  uuid: get_districts_berlin
+  type: data_exporter
+  upstream_blocks:
+  - create_datetime_id_dim
+  uuid: export_datetime_div_locally
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: export_fact_table_locally
+  retry_config: null
+  status: failed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - transform_traffic_data
+  uuid: export_fact_table_locally
 callbacks: []
 concurrency_config: {}
 conditionals: []
-created_at: '2023-09-22 08:24:28.182346+00:00'
+created_at: null
 data_integration: null
 description: null
 executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: get_traffic_sensor_location_to_locationdim
+name: get_trafficdata_transform_to_facttable_datetimedim_locally
 notification_config: {}
 retry_config: {}
 run_pipeline_in_one_process: false
 spark_config: {}
 tags: []
 type: python
-updated_at: '2023-09-22 09:09:36'
-uuid: get_traffic_sensor_location_to_locationdim
+updated_at: '2023-09-26 13:10:56'
+uuid: get_trafficdata_transform_to_facttable_datetimedim_locally
 widgets: []

@@ -54,7 +54,7 @@ def load_data_from_api(**kwargs) -> DataFrame:
     one dataframe and returns it.
     """
     # Pass a year between 2015-2022 to date the data further back
-    urls_list = get_urls()
+    urls_list = get_urls(2019)
 
     for index, url in enumerate(urls_list):
         try:

@@ -1,0 +1,89 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: null
+  downstream_blocks:
+  - transform_traffic_sensor_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: get_traffic_sensor_location
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: get_traffic_sensor_location
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: null
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: get_districts_berlin
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: get_districts_berlin
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_path: null
+  downstream_blocks:
+  - export_location_dim_to_bigquery
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: transform_traffic_sensor_data
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - get_traffic_sensor_location
+  uuid: transform_traffic_sensor_data
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_path: null
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: export_location_dim_to_bigquery
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - transform_traffic_sensor_data
+  uuid: export_location_dim_to_bigquery
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2023-09-28 08:10:46.308343+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: get_traffic_sensor_location_to_locationdim_bigquery
+notification_config: {}
+retry_config: {}
+run_pipeline_in_one_process: false
+spark_config: {}
+tags: []
+type: python
+updated_at: '2023-09-28 08:12:27'
+uuid: get_traffic_sensor_location_to_locationdim_bigquery
+widgets: []
